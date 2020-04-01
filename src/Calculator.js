@@ -1,22 +1,14 @@
 import React from 'react';
 
-function HeightRange(props) {
+
+function Range(props) {
   return <div className="slide-container">
-    <span className="slider-title">Height</span>
-    <span className="min-num">90</span>
-    <input type="range" min="90" max="245" step="1" className="slider"
-           onChange={props.onChange} id="weight-slider" value={props.value} />
-    <span className="max-num">245</span>
+    <label htmlFor="bmi-slider" className="slider-title">{props.label}</label>
+    <span className="min-num">{props.min}</span>
+    <input type="range" min={props.min} max={props.max} step="1" className="slider"
+           onChange={props.onChange} value={props.value} id="bmi-slider" />
+    <span className="max-num">{props.max}</span>
   </div>
-}
-function WeightRange(props) {
-  return <div className="slide-container">
-          <span className="slider-title">Weight</span>
-          <span className="min-num">35</span>
-          <input type="range" min="35" max="200" step="1" className="slider"
-                 onChange={props.onChange} id="weight-slider" value={props.value} />
-          <span className="max-num">200</span>
-          </div>
 }
 
 class Calculator extends React.Component {
@@ -51,16 +43,12 @@ class Calculator extends React.Component {
     return (
       <div className="calculator-container">
         <h2 className="title">BMI calculator</h2>
-        <HeightRange
-          value={this.state.height}
-          onChange = {this.handleHeightChange}
-        />
+        <Range value={this.state.height} min="90" max="245" label="Height"
+               onChange = {this.handleHeightChange} />
         <div className="height">{`${this.state.height} cm`}</div>
 
-        <WeightRange
-          value={this.state.weight}
-          onChange = {this.handleWeightChange}
-        />
+        <Range value={this.state.weight} min="35" max="200" label="Weight"
+               onChange = {this.handleWeightChange} />
         <div className="weight">{`${this.state.weight} kg`}</div>
         <div className="result"><span>BMI</span>{this.calculate()}</div>
       </div>
