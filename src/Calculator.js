@@ -43,11 +43,11 @@ class Calculator extends React.Component {
     height: 90,
   }
 
-  handleWeightChange(e) {
+  handleWeightChange = (e) => {
     this.setState({ weight: e.target.value});
   }
 
-  handleHeightChange(e) {
+  handleHeightChange = (e) => {
     this.setState({ height: e.target.value});
   }
 
@@ -63,7 +63,7 @@ class Calculator extends React.Component {
           value={height}
           min="90" max="245"
           label="Height"
-          onChange={(e) => this.handleHeightChange(e)}
+          onChange={this.handleHeightChange}
         />
 
         <div className="height">
@@ -74,7 +74,7 @@ class Calculator extends React.Component {
           value={weight}
           min="35" max="200"
           label="Weight"
-          onChange={(e) => this.handleWeightChange(e)}
+          onChange={this.handleWeightChange}
         />
 
         <div className="weight">
